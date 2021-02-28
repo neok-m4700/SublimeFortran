@@ -18,7 +18,9 @@ except (ImportError):
 class GfortranFixedForm(Linter):
     """Provides an interface to gfortran."""
     syntax = 'fortranfixedform'
-    cmd = 'gfortran -cpp -fsyntax-only -Wall'
+    # cmd = 'gfortran -cpp -fsyntax-only -Wall'
+    # stackoverflow.com/a/38867606
+    cmd = 'bash -c "mkdir -p .mod; gfortran -J .mod -cpp -fsyntax-only -Wall $@" _'
     executable = None
     version_args = '--version'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
@@ -38,7 +40,9 @@ class GfortranFixedForm(Linter):
 class GfortranModern(Linter):
     """Provides an interface to gfortran."""
     syntax = 'fortranmodern'
-    cmd = 'gfortran -cpp -fsyntax-only -Wall'
+    # cmd = 'gfortran -cpp -fsyntax-only -Wall'
+    # stackoverflow.com/a/38867606
+    cmd = 'bash -c "mkdir -p .mod; gfortran -J .mod -cpp -fsyntax-only -Wall $@" _'
     executable = None
     version_args = '--version'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
